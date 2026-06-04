@@ -3,260 +3,224 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>임종권 | 이력서</title>
-  <meta name="description" content="정확함과 기록으로 일하는 행정·총무 실무자. 행정 경험에 AI·디지털 역량을 더하고 있습니다." />
-  <link rel="stylesheet" as="style" crossorigin
-        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <title>임종권 — 행정·총무 / Digital Shift</title>
+  <meta name="description" content="정확함과 기록으로 일하는 행정·총무 실무자 임종권. 행정 경험에 AI·디지털 역량을 더하고 있습니다." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --ink: #0f172a;
-      --body: #334155;
-      --muted: #64748b;
-      --accent: #4f46e5;
-      --accent-soft: #eef2ff;
-      --bg: #ffffff;
-      --bg-alt: #f8fafc;
-      --line: #e2e8f0;
-      --radius: 16px;
+    :root{
+      --paper:#f3efe6; --ink:#17150e; --accent:#ff3b14;
+      --muted:#6f6a5c; --line:#dcd6c8;
+      --display:'Space Grotesk','IBM Plex Sans KR',sans-serif;
+      --sans:'IBM Plex Sans KR','Space Grotesk',sans-serif;
+      --mono:'Space Mono',monospace;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic", sans-serif;
-      color: var(--body);
-      background: var(--bg);
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-    a { color: inherit; text-decoration: none; }
-    .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+    @media(max-width:600px){.wrap{padding:0 20px}}
 
-    /* ===== Nav ===== */
-    .nav {
-      position: sticky; top: 0; z-index: 50;
-      background: rgba(255, 255, 255, 0.82);
-      backdrop-filter: saturate(180%) blur(12px);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
-    .nav .brand { font-weight: 800; color: var(--ink); letter-spacing: -0.02em; }
-    .nav .links { display: flex; gap: 22px; font-size: 0.92rem; font-weight: 500; color: var(--muted); }
-    .nav .links a:hover { color: var(--accent); }
-    @media (max-width: 560px) { .nav .links { display: none; } }
+    /* grain texture */
+    .grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.045;mix-blend-mode:multiply;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
 
-    /* ===== Hero ===== */
-    .hero {
-      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 48%, #1e3a8a 100%);
-      color: #fff; padding: 84px 0 76px; position: relative; overflow: hidden;
-    }
-    .hero::after {
-      content: ""; position: absolute; right: -120px; top: -120px;
-      width: 360px; height: 360px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(129,140,248,0.35), transparent 70%);
-    }
-    .hero .wrap { position: relative; z-index: 1; }
-    .badge {
-      display: inline-flex; align-items: center; gap: 7px;
-      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22);
-      padding: 6px 14px; border-radius: 999px; font-size: 0.82rem; font-weight: 500;
-      margin-bottom: 22px;
-    }
-    .badge .dot { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 0 3px rgba(74,222,128,0.3); }
-    .hero h1 { font-size: 2.9rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; }
-    .hero .role { margin-top: 6px; font-size: 1.15rem; font-weight: 600; color: #c7d2fe; }
-    .hero .tagline { margin-top: 18px; font-size: 1.05rem; color: rgba(255,255,255,0.86); max-width: 620px; }
-    @media (max-width: 560px) { .hero h1 { font-size: 2.2rem; } }
+    /* topbar */
+    .topbar{position:sticky;top:0;z-index:30;background:rgba(243,239,230,.82);backdrop-filter:blur(8px);border-bottom:1px solid var(--ink)}
+    .topbar .row{display:flex;align-items:center;justify-content:space-between;height:58px}
+    .logo{font-family:var(--display);font-weight:700;letter-spacing:-.01em;font-size:1.05rem}
+    .logo em{font-style:normal;font-family:var(--mono);font-size:.68rem;color:var(--muted);font-weight:400;margin-left:6px}
+    .mininav{display:flex;gap:22px;font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.04em}
+    .mininav a{color:var(--muted);transition:color .15s}
+    .mininav a:hover{color:var(--accent)}
+    @media(max-width:640px){.mininav{display:none}}
 
-    /* ===== Sections ===== */
-    section.block { padding: 64px 0; border-bottom: 1px solid var(--line); }
-    section.block.alt { background: var(--bg-alt); }
-    .eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
-    .h2 { font-size: 1.6rem; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; margin: 8px 0 26px; }
-    .lead { font-size: 1.05rem; color: var(--body); max-width: 680px; }
-    .lead strong { color: var(--ink); font-weight: 700; }
+    /* hero */
+    .hero{padding:84px 0 52px;position:relative;z-index:2}
+    .kicker{font-family:var(--mono);font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);display:flex;align-items:center;gap:10px;margin-bottom:30px}
+    .dot{width:8px;height:8px;background:var(--accent);border-radius:50%;box-shadow:0 0 0 4px rgba(255,59,20,.16)}
+    .name{font-family:var(--display);font-weight:700;font-size:clamp(4rem,15vw,9.5rem);line-height:.94;letter-spacing:-.02em}
+    .role{font-family:var(--display);font-weight:500;font-size:clamp(1.15rem,3.2vw,1.85rem);margin-top:26px;letter-spacing:-.01em}
+    .role .accent{color:var(--accent)}
+    .intro{max-width:560px;margin-top:18px;color:var(--muted);font-size:1.05rem}
 
-    /* ===== Skills grid ===== */
-    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
-    .card {
-      background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
-      padding: 24px; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-    }
-    .card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(15,23,42,0.08); border-color: #c7d2fe; }
-    .card .ic { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 11px; background: var(--accent-soft); font-size: 1.25rem; margin-bottom: 14px; }
-    .card h3 { font-size: 1.05rem; color: var(--ink); font-weight: 700; margin-bottom: 6px; }
-    .card p { font-size: 0.95rem; color: var(--muted); }
+    /* marquee */
+    .marquee{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);background:var(--ink);color:var(--paper);overflow:hidden;white-space:nowrap;padding:13px 0;position:relative;z-index:2}
+    .track{display:inline-block;animation:scroll 30s linear infinite;font-family:var(--display);font-weight:500;font-size:1.02rem;letter-spacing:.02em}
+    .track span{padding-left:30px}
+    .track span::before{content:"✱";color:var(--accent);margin-right:30px}
+    @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .marquee:hover .track{animation-play-state:paused}
 
-    /* ===== Timeline ===== */
-    .timeline { border-left: 2px solid var(--line); margin-left: 8px; padding-left: 28px; }
-    .item { position: relative; padding-bottom: 28px; }
-    .item:last-child { padding-bottom: 0; }
-    .item::before {
-      content: ""; position: absolute; left: -36px; top: 4px;
-      width: 12px; height: 12px; border-radius: 50%; background: var(--accent);
-      border: 3px solid #fff; box-shadow: 0 0 0 2px var(--accent-soft);
-    }
-    .item .when { font-size: 0.82rem; font-weight: 700; color: var(--accent); letter-spacing: 0.02em; }
-    .item .what { font-size: 1.05rem; font-weight: 700; color: var(--ink); margin: 2px 0 4px; }
-    .item .desc { font-size: 0.95rem; color: var(--muted); }
+    /* sections */
+    .sec{display:grid;grid-template-columns:170px 1fr;gap:40px;padding:62px 0;border-bottom:1px solid var(--line);position:relative;z-index:2}
+    @media(max-width:720px){.sec{grid-template-columns:1fr;gap:16px;padding:46px 0}}
+    .secnum{font-family:var(--mono);font-size:.76rem;letter-spacing:.06em;color:var(--accent);text-transform:uppercase}
+    .sectitle{font-family:var(--display);font-weight:700;font-size:1.85rem;letter-spacing:-.02em;margin-bottom:22px}
+    .lead{font-size:1.12rem;max-width:620px}
+    .lead b{font-weight:700}
 
-    /* ===== Two-col (cert / learning) ===== */
-    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-    @media (max-width: 560px) { .two { grid-template-columns: 1fr; gap: 28px; } }
-    .sub { font-size: 1.05rem; font-weight: 700; color: var(--ink); margin-bottom: 14px; }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-    .chip { background: var(--accent-soft); color: #3730a3; font-size: 0.9rem; font-weight: 500; padding: 7px 14px; border-radius: 999px; }
-    .list { list-style: none; }
-    .list li { padding: 6px 0 6px 20px; position: relative; color: var(--body); }
-    .list li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+    /* skills — index rows */
+    .rows{border-top:1px solid var(--line)}
+    .r{display:grid;grid-template-columns:34px 210px 1fr;gap:16px;align-items:baseline;padding:18px 8px;border-bottom:1px solid var(--line);transition:background .18s,padding-left .18s,color .18s}
+    .r:hover{background:var(--ink);color:var(--paper);padding-left:18px}
+    .r .n{font-family:var(--mono);font-size:.78rem;color:var(--accent)}
+    .r .t{font-family:var(--display);font-weight:600;font-size:1.1rem}
+    .r .d{color:var(--muted);font-size:.97rem}
+    .r:hover .d{color:#cfc9ba}
+    @media(max-width:600px){.r{grid-template-columns:1fr;gap:4px}.r .n{display:none}}
 
-    /* ===== Goal callout ===== */
-    .goal { margin-top: 30px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 12px; padding: 20px 24px; }
-    .goal .k { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
-    .goal p { font-size: 1.08rem; font-weight: 600; color: var(--ink); margin-top: 4px; }
+    /* experience */
+    .xp{display:grid;grid-template-columns:170px 1fr;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)}
+    .xp:last-child{border-bottom:0}
+    .xp .yr{font-family:var(--display);font-weight:600;font-size:1.05rem;color:var(--accent)}
+    .xp .ti{font-family:var(--display);font-weight:600;font-size:1.14rem}
+    .xp .ds{color:var(--muted);margin-top:4px;font-size:.97rem}
+    @media(max-width:600px){.xp{grid-template-columns:1fr;gap:5px}}
 
-    /* ===== Footer ===== */
-    footer { padding: 44px 0; text-align: center; color: var(--muted); font-size: 0.88rem; }
-    footer .gh { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: var(--ink); border: 1px solid var(--line); padding: 9px 18px; border-radius: 999px; margin-bottom: 18px; transition: border-color .18s, color .18s; }
-    footer .gh:hover { border-color: var(--accent); color: var(--accent); }
+    /* more */
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:44px}
+    @media(max-width:600px){.two{grid-template-columns:1fr;gap:30px}}
+    .sublbl{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:16px}
+    .tags{display:flex;flex-wrap:wrap;gap:10px}
+    .tag{border:1.5px solid var(--ink);padding:8px 16px;font-family:var(--display);font-weight:500;font-size:.92rem;transition:.16s}
+    .tag:hover{background:var(--accent);border-color:var(--accent);color:#fff;transform:translateY(-2px)}
+    .learn{list-style:none}
+    .learn li{padding:9px 0;border-bottom:1px solid var(--line);font-weight:500;display:flex;gap:11px}
+    .learn li::before{content:"→";color:var(--accent);font-family:var(--mono)}
 
-    /* entrance */
-    @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-    .hero .wrap > * { animation: rise .6s ease both; }
-    .hero .role { animation-delay: .08s; }
-    .hero .tagline { animation-delay: .16s; }
+    /* goal pull-quote */
+    .goal{padding:78px 0;position:relative;z-index:2}
+    .goal .secnum{margin-bottom:22px}
+    .big{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,5.2vw,3.4rem);line-height:1.14;letter-spacing:-.02em;max-width:920px}
+    .big .accent{color:var(--accent)}
+
+    /* footer */
+    footer{border-top:1px solid var(--ink);padding:40px 0 64px;position:relative;z-index:2}
+    .foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px}
+    .gh{display:inline-flex;align-items:center;gap:9px;font-family:var(--display);font-weight:600;border:1.5px solid var(--ink);padding:11px 19px;transition:.16s}
+    .gh:hover{background:var(--ink);color:var(--paper)}
+    .foot .meta{font-family:var(--mono);font-size:.72rem;color:var(--muted);text-align:right;line-height:1.7}
+    .foot .meta .easter{color:var(--accent)}
+
+    /* load reveal */
+    @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+    .hero .wrap>*{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+    .hero .name{animation-delay:.04s}
+    .hero .role{animation-delay:.13s}
+    .hero .intro{animation-delay:.21s}
+    @media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto}}
   </style>
 </head>
 <body>
-  <header class="nav">
-    <div class="wrap">
-      <a href="#top" class="brand">임종권</a>
-      <nav class="links">
-        <a href="#about">소개</a>
-        <a href="#skills">핵심 역량</a>
-        <a href="#career">경력</a>
-        <a href="#more">자격 · 학습</a>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="wrap row">
+      <span class="logo">임종권<em>LIM JONG-GWON</em></span>
+      <nav class="mininav">
+        <a href="#about">01 / 소개</a>
+        <a href="#skills">02 / 역량</a>
+        <a href="#exp">03 / 경력</a>
+        <a href="#more">04 / 자격</a>
       </nav>
     </div>
   </header>
 
-  <section class="hero" id="top">
+  <section class="hero">
     <div class="wrap">
-      <span class="badge"><span class="dot"></span> 디지털 역량 전환 중</span>
-      <h1>임종권</h1>
-      <p class="role">행정 · 총무 실무자</p>
-      <p class="tagline">맡은 일을 끝까지 확인하고, 기록으로 남깁니다. 행정·총무 현장 경험에 AI·디지털 역량을 더해 실용적인 문제 해결자로 나아가고 있습니다.</p>
+      <p class="kicker"><span class="dot"></span> 디지털 역량 전환 중 · PORTFOLIO 2026</p>
+      <h1 class="name">임종권</h1>
+      <p class="role">행정 · 총무 실무자 <span class="accent">— 기록으로 일합니다.</span></p>
+      <p class="intro">맡은 일을 끝까지 확인하고 기록으로 남깁니다. 행정·총무 현장 경험에 AI·디지털 역량을 더해 실용적인 문제 해결자로 나아가고 있습니다.</p>
     </div>
   </section>
 
-  <main>
-    <section class="block" id="about">
-      <div class="wrap">
-        <p class="eyebrow">About</p>
-        <h2 class="h2">소개</h2>
+  <div class="marquee" aria-hidden="true">
+    <div class="track">
+      <span>행정 · 총무</span><span>문서·증빙 관리</span><span>민원 응대</span><span>전산자료 관리</span><span>일정 관리</span><span>PYTHON</span><span>GIT</span><span>AI · 프롬프트</span><span>LLM</span><span>정확함</span><span>기록</span><span>행정 · 총무</span><span>문서·증빙 관리</span><span>민원 응대</span><span>전산자료 관리</span><span>일정 관리</span><span>PYTHON</span><span>GIT</span><span>AI · 프롬프트</span><span>LLM</span><span>정확함</span><span>기록</span>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section id="about" class="sec">
+      <p class="secnum">[01] — ABOUT</p>
+      <div>
+        <h2 class="sectitle">소개</h2>
         <p class="lead">
-          <strong>기본을 정확히 지키는 것</strong>을 좌우명으로 행정·총무 실무를 수행해 왔습니다.
+          <b>기본을 정확히 지키는 것</b>을 좌우명으로 행정·총무 실무를 수행해 왔습니다.
           행정업무에서는 작은 누락 하나가 다음 업무의 지연으로 이어질 수 있기에,
-          <strong>처리 순서와 누락 가능 항목을 먼저 점검</strong>합니다.
-          민원 응대부터 문서·증빙 정리, 전산자료 관리까지 사람을 상대하는 행정의 기본을 현장에서 익혔습니다.
+          <b>처리 순서와 누락 가능 항목을 먼저 점검</b>합니다. 민원 응대부터 문서·증빙 정리,
+          전산자료 관리까지 — 사람을 상대하는 행정의 기본을 현장에서 익혔습니다.
         </p>
       </div>
     </section>
 
-    <section class="block alt" id="skills">
-      <div class="wrap">
-        <p class="eyebrow">Skills</p>
-        <h2 class="h2">핵심 역량</h2>
-        <div class="grid">
-          <div class="card">
-            <div class="ic">📋</div>
-            <h3>행정 · 총무</h3>
-            <p>민원 응대, 문서·증빙 정리, 전산자료 관리, 일정 관리</p>
-          </div>
-          <div class="card">
-            <div class="ic">🤝</div>
-            <h3>사업운영 지원</h3>
-            <p>접수자료 확인, 외부 연락·안내, 물품·자산 관리</p>
-          </div>
-          <div class="card">
-            <div class="ic">🗂️</div>
-            <h3>문서 · 데이터</h3>
-            <p>한글(HWP)·엑셀 문서작성, 자료 정리 및 검증</p>
-          </div>
-          <div class="card">
-            <div class="ic">🚀</div>
-            <h3>디지털 전환 <span style="font-weight:500;color:var(--muted);font-size:.85rem">(학습 중)</span></h3>
-            <p>AI 기초·프롬프트 엔지니어링, Python, Git / 버전관리</p>
-          </div>
+    <section id="skills" class="sec">
+      <p class="secnum">[02] — CAPABILITIES</p>
+      <div>
+        <h2 class="sectitle">핵심 역량</h2>
+        <div class="rows">
+          <div class="r"><span class="n">01</span><span class="t">행정 · 총무</span><span class="d">민원 응대 · 문서·증빙 정리 · 전산자료 관리 · 일정 관리</span></div>
+          <div class="r"><span class="n">02</span><span class="t">사업운영 지원</span><span class="d">접수자료 확인 · 외부 연락·안내 · 물품·자산 관리</span></div>
+          <div class="r"><span class="n">03</span><span class="t">문서 · 데이터</span><span class="d">한글(HWP)·엑셀 문서작성 · 자료 정리 및 검증</span></div>
+          <div class="r"><span class="n">04</span><span class="t">디지털 전환 <span style="color:var(--muted);font-weight:400;font-size:.82em">(학습 중)</span></span><span class="d">AI 기초·프롬프트 엔지니어링 · Python · Git / 버전관리</span></div>
         </div>
       </div>
     </section>
 
-    <section class="block" id="career">
-      <div class="wrap">
-        <p class="eyebrow">Experience</p>
-        <h2 class="h2">경력</h2>
-        <div class="timeline">
-          <div class="item">
-            <p class="when">2023 – 2026</p>
-            <p class="what">행정지원 · 대리 <span style="font-weight:500;color:var(--muted)">(비영리 분야)</span></p>
-            <p class="desc">총무·행정, 민원성 요청 응대, 문서·증빙 확인, 전산자료 관리</p>
-          </div>
-          <div class="item">
-            <p class="when">2020 – 2021</p>
-            <p class="what">장비 운용 · 대리</p>
-            <p class="desc">장비 점검·운용, 이슈 기록 및 자료 정리</p>
-          </div>
-          <div class="item">
-            <p class="when">2016 – 2018</p>
-            <p class="what">장비 검증 · 주임</p>
-            <p class="desc">장비 검증, 데이터 정리 및 품질 관리 보조</p>
-          </div>
-          <div class="item">
-            <p class="when">대학원 재학 중</p>
-            <p class="what">학사사무실 조교</p>
-            <p class="desc">학생 안내, 학사자료 정리, 행정업무 보조</p>
-          </div>
-        </div>
+    <section id="exp" class="sec">
+      <p class="secnum">[03] — EXPERIENCE</p>
+      <div>
+        <h2 class="sectitle">경력</h2>
+        <div class="xp"><div class="yr">2023 — 2026</div><div><div class="ti">행정지원 · 대리 <span style="color:var(--muted);font-weight:400">/ 비영리 분야</span></div><div class="ds">총무·행정, 민원성 요청 응대, 문서·증빙 확인, 전산자료 관리</div></div></div>
+        <div class="xp"><div class="yr">2020 — 2021</div><div><div class="ti">장비 운용 · 대리</div><div class="ds">장비 점검·운용, 이슈 기록 및 자료 정리</div></div></div>
+        <div class="xp"><div class="yr">2016 — 2018</div><div><div class="ti">장비 검증 · 주임</div><div class="ds">장비 검증, 데이터 정리 및 품질 관리 보조</div></div></div>
+        <div class="xp"><div class="yr">대학원 재학 중</div><div><div class="ti">학사사무실 조교</div><div class="ds">학생 안내, 학사자료 정리, 행정업무 보조</div></div></div>
       </div>
     </section>
 
-    <section class="block alt" id="more">
-      <div class="wrap">
-        <p class="eyebrow">Certifications & Learning</p>
-        <h2 class="h2">자격 · 학습</h2>
-        <div class="two">
-          <div>
-            <p class="sub">보유 자격</p>
-            <div class="chips">
-              <span class="chip">사회복지사 1급</span>
-              <span class="chip">1종 대형 운전면허</span>
-            </div>
-          </div>
-          <div>
-            <p class="sub">현재 학습 중</p>
-            <ul class="list">
-              <li>AI 기초 &amp; 프롬프트 엔지니어링</li>
-              <li>Python</li>
-              <li>GitHub &amp; 버전관리</li>
-              <li>LLM 기반 서비스 개발</li>
-            </ul>
+    <section id="more" class="sec">
+      <p class="secnum">[04] — CREDENTIALS</p>
+      <div class="two">
+        <div>
+          <p class="sublbl">보유 자격</p>
+          <div class="tags">
+            <span class="tag">사회복지사 1급</span>
+            <span class="tag">1종 대형 운전면허</span>
           </div>
         </div>
-        <div class="goal">
-          <p class="k">Goal</p>
-          <p>행정 경험을 바탕으로 AI 기술을 더해, 실용적인 서비스를 만드는 사람이 되는 것.</p>
+        <div>
+          <p class="sublbl">현재 학습 중</p>
+          <ul class="learn">
+            <li>AI 기초 &amp; 프롬프트 엔지니어링</li>
+            <li>Python</li>
+            <li>GitHub &amp; 버전관리</li>
+            <li>LLM 기반 서비스 개발</li>
+          </ul>
         </div>
       </div>
     </section>
   </main>
 
+  <section class="goal wrap">
+    <p class="secnum">[05] — GOAL</p>
+    <p class="big">행정 경험에 AI를 더해,<br /><span class="accent">실용적인 서비스</span>를 만드는 사람.</p>
+  </section>
+
   <footer>
-    <a class="gh" href="https://github.com/restboy2606" target="_blank" rel="noopener">
-      <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-      github.com/restboy2606
-    </a>
-    <div>© 2026 임종권 · Last updated 2026.06</div>
+    <div class="wrap foot">
+      <a class="gh" href="https://github.com/restboy2606" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        github.com/restboy2606
+      </a>
+      <div class="meta">
+        © 2026 임종권 · LAST UPDATE 2026.06<br />
+        <span class="easter">✱ built with intent — no Inter, no purple gradient</span>
+      </div>
+    </div>
   </footer>
 </body>
 </html>
