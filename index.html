@@ -5,133 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>임종권 — 행정·총무 / Digital Shift</title>
   <meta name="description" content="정확함과 기록으로 일하는 행정·총무 실무자 임종권. 행정 경험에 AI·디지털 역량을 더하고 있습니다." />
+  <meta name="theme-color" content="#3a1e63" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <style>
-    :root{
-      --paper:#f3efe6; --ink:#17150e; --accent:#ff3b14;
-      --muted:#6f6a5c; --line:#dcd6c8;
-      --display:'Space Grotesk','IBM Plex Sans KR',sans-serif;
-      --sans:'IBM Plex Sans KR','Space Grotesk',sans-serif;
-      --mono:'Space Mono',monospace;
-    }
-    *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:1080px;margin:0 auto;padding:0 32px}
-    @media(max-width:600px){.wrap{padding:0 20px}}
-
-    /* grain texture */
-    .grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.045;mix-blend-mode:multiply;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
-
-    /* topbar */
-    .topbar{position:sticky;top:0;z-index:30;background:rgba(243,239,230,.82);backdrop-filter:blur(8px);border-bottom:1px solid var(--ink)}
-    .topbar .row{display:flex;align-items:center;justify-content:space-between;height:58px}
-    .logo{font-family:var(--display);font-weight:700;letter-spacing:-.01em;font-size:1.05rem}
-    .logo em{font-style:normal;font-family:var(--mono);font-size:.68rem;color:var(--muted);font-weight:400;margin-left:6px}
-    .mininav{display:flex;gap:22px;font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.04em}
-    .mininav a{color:var(--muted);transition:color .15s}
-    .mininav a:hover{color:var(--accent)}
-    @media(max-width:640px){.mininav{display:none}}
-
-    /* hero */
-    .hero{padding:84px 0 52px;position:relative;z-index:2;perspective:900px}
-    .kicker{font-family:var(--mono);font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);display:flex;align-items:center;gap:10px;margin-bottom:30px}
-    .dot{width:8px;height:8px;background:var(--accent);border-radius:50%;box-shadow:0 0 0 4px rgba(255,59,20,.16)}
-    .name{font-family:var(--display);font-weight:700;font-size:clamp(4rem,15vw,9.5rem);line-height:.94;letter-spacing:-.02em;will-change:transform;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
-    .scramble{cursor:default}
-    .role{font-family:var(--display);font-weight:500;font-size:clamp(1.15rem,3.2vw,1.85rem);margin-top:26px;letter-spacing:-.01em}
-    .role .accent{color:var(--accent)}
-    .intro{max-width:560px;margin-top:18px;color:var(--muted);font-size:1.05rem}
-
-    /* marquee */
-    .marquee{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);background:var(--ink);color:var(--paper);overflow:hidden;white-space:nowrap;padding:13px 0;position:relative;z-index:2}
-    .track{display:inline-block;animation:scroll 30s linear infinite;font-family:var(--display);font-weight:500;font-size:1.02rem;letter-spacing:.02em}
-    .track span{padding-left:30px}
-    .track span::before{content:"✱";color:var(--accent);margin-right:30px}
-    @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-    .marquee:hover .track{animation-play-state:paused}
-
-    /* sections */
-    .sec{display:grid;grid-template-columns:170px 1fr;gap:40px;padding:62px 0;border-bottom:1px solid var(--line);position:relative;z-index:2}
-    @media(max-width:720px){.sec{grid-template-columns:1fr;gap:16px;padding:46px 0}}
-    .secnum{font-family:var(--mono);font-size:.76rem;letter-spacing:.06em;color:var(--accent);text-transform:uppercase}
-    .sectitle{font-family:var(--display);font-weight:700;font-size:1.85rem;letter-spacing:-.02em;margin-bottom:22px}
-    .lead{font-size:1.12rem;max-width:620px}
-    .lead b{font-weight:700}
-
-    /* skills — index rows */
-    .rows{border-top:1px solid var(--line)}
-    .r{display:grid;grid-template-columns:34px 210px 1fr;gap:16px;align-items:baseline;padding:18px 8px;border-bottom:1px solid var(--line);transition:background .18s,padding-left .18s,color .18s}
-    .r:hover{background:var(--ink);color:var(--paper);padding-left:18px}
-    .r .n{font-family:var(--mono);font-size:.78rem;color:var(--accent)}
-    .r .t{font-family:var(--display);font-weight:600;font-size:1.1rem}
-    .r .d{color:var(--muted);font-size:.97rem}
-    .r:hover .d{color:#cfc9ba}
-    @media(max-width:600px){.r{grid-template-columns:1fr;gap:4px}.r .n{display:none}}
-
-    /* experience */
-    .xp{display:grid;grid-template-columns:170px 1fr;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)}
-    .xp:last-child{border-bottom:0}
-    .xp .yr{font-family:var(--display);font-weight:600;font-size:1.05rem;color:var(--accent)}
-    .xp .ti{font-family:var(--display);font-weight:600;font-size:1.14rem}
-    .xp .ds{color:var(--muted);margin-top:4px;font-size:.97rem}
-    @media(max-width:600px){.xp{grid-template-columns:1fr;gap:5px}}
-
-    /* more */
-    .two{display:grid;grid-template-columns:1fr 1fr;gap:44px}
-    @media(max-width:600px){.two{grid-template-columns:1fr;gap:30px}}
-    .sublbl{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:16px}
-    .tags{display:flex;flex-wrap:wrap;gap:10px}
-    .tag{border:1.5px solid var(--ink);padding:8px 16px;font-family:var(--display);font-weight:500;font-size:.92rem;transition:.16s}
-    .tag:hover{background:var(--accent);border-color:var(--accent);color:#fff;transform:translateY(-2px)}
-    .learn{list-style:none}
-    .learn li{padding:9px 0;border-bottom:1px solid var(--line);font-weight:500;display:flex;gap:11px}
-    .learn li::before{content:"→";color:var(--accent);font-family:var(--mono)}
-
-    /* goal pull-quote */
-    .goal{padding:78px 0;position:relative;z-index:2}
-    .goal .secnum{margin-bottom:22px}
-    .big{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,5.2vw,3.4rem);line-height:1.14;letter-spacing:-.02em;max-width:920px}
-    .big .accent{color:var(--accent)}
-
-    /* footer */
-    footer{border-top:1px solid var(--ink);padding:40px 0 64px;position:relative;z-index:2}
-    .foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px}
-    .gh{display:inline-flex;align-items:center;gap:9px;font-family:var(--display);font-weight:600;border:1.5px solid var(--ink);padding:11px 19px;transition:.16s}
-    .gh:hover{background:var(--ink);color:var(--paper)}
-    .foot .meta{font-family:var(--mono);font-size:.72rem;color:var(--muted);text-align:right;line-height:1.7}
-    .foot .meta .easter{color:var(--accent)}
-
-    /* load reveal */
-    @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-    @keyframes fadein{from{opacity:0}to{opacity:1}}
-    .hero .wrap>*{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
-    .hero .name{animation:fadein .7s ease both;animation-delay:.04s}
-    .hero .role{animation-delay:.13s}
-    .hero .intro{animation-delay:.21s}
-    @media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto}}
-
-    /* ===== 병맛존 ㅋㅋ ===== */
-    html{background:var(--paper)}
-    @keyframes barrel{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-    .barrel-roll{animation:barrel 1s ease}
-    .dot{cursor:pointer}
-    .easter{cursor:pointer}
-    .confetti{position:fixed;top:0;left:0;font-size:26px;pointer-events:none;z-index:9999;will-change:transform,opacity}
-    .toast{position:fixed;left:50%;bottom:34px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:.8rem;padding:12px 20px;z-index:9999;opacity:0;transition:.3s;white-space:nowrap;border:1px solid var(--accent)}
-    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-    /* 🤮 AI SLOP MODE — 우리가 그렇게 피하던 그 느낌 그대로 소환 (개그) */
-    body.slop{background:linear-gradient(135deg,#7c3aed,#4f46e5,#2563eb)!important}
-    body.slop .grain,body.slop .marquee{display:none!important}
-    body.slop *{font-family:"Comic Sans MS","Comic Sans","Inter",sans-serif!important;color:#fff!important;border-radius:14px!important;letter-spacing:0!important;text-align:center!important}
-    body.slop .wrap,body.slop .sec,body.slop .two,body.slop .rows,body.slop .xp,body.slop .r{display:block!important}
-    body.slop .name{text-shadow:0 6px 24px rgba(0,0,0,.35)}
-    body.slop .tag,body.slop .gh{background:rgba(255,255,255,.16)!important;border-color:rgba(255,255,255,.45)!important}
-  </style>
+  <!-- 컬러/토큰 → 레이아웃 순으로 각각 분리해서 적용 -->
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <!-- 테마 초기화(깜빡임 방지): 저장값 → 없으면 시스템 설정 -->
+  <script>
+    (function () {
+      try {
+        var s = localStorage.getItem('theme');
+        var t = s || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -139,12 +29,15 @@
   <header class="topbar">
     <div class="wrap row">
       <span class="logo">임종권<em>LIM JONG-GWON</em></span>
-      <nav class="mininav">
-        <a href="#about">01 / 소개</a>
-        <a href="#skills">02 / 역량</a>
-        <a href="#exp">03 / 경력</a>
-        <a href="#more">04 / 자격</a>
-      </nav>
+      <div class="navwrap">
+        <nav class="mininav">
+          <a href="#about">01 / 소개</a>
+          <a href="#skills">02 / 역량</a>
+          <a href="#exp">03 / 경력</a>
+          <a href="#colors">05 / 컬러</a>
+        </nav>
+        <button class="themebtn" id="themeBtn" type="button" aria-label="다크/라이트 모드 전환">🌙</button>
+      </div>
     </div>
   </header>
 
@@ -222,10 +115,29 @@
         </div>
       </div>
     </section>
+
+    <section id="colors" class="sec">
+      <p class="secnum">[05] — COLOR SYSTEM</p>
+      <div>
+        <h2 class="sectitle">컬러 시스템</h2>
+        <div class="brandrow">
+          <span class="brandchip"><i style="background:var(--primary)"></i> 주컬러 · 다크 퍼플</span>
+          <span class="brandchip"><i style="background:var(--secondary)"></i> 보조 · 퍼플 50%</span>
+          <span class="brandchip"><i style="background:var(--event)"></i> 이벤트 · 옐로우</span>
+        </div>
+        <div class="palette">
+          <div class="swatch"><div class="chips"><span style="background:var(--purple-dark)"></span><span style="background:var(--purple-light)"></span></div><div class="meta"><b>퍼플</b><code>#3A1E63 / #B89DEC</code></div></div>
+          <div class="swatch"><div class="chips"><span style="background:var(--blue-dark)"></span><span style="background:var(--blue-light)"></span></div><div class="meta"><b>블루</b><code>#16284D / #5B8DEF</code></div></div>
+          <div class="swatch"><div class="chips"><span style="background:var(--green-dark)"></span><span style="background:var(--green-light)"></span></div><div class="meta"><b>그린</b><code>#123524 / #7BD651</code></div></div>
+          <div class="swatch"><div class="chips"><span style="background:var(--amber-dark)"></span><span style="background:var(--amber-light)"></span></div><div class="meta"><b>앰버</b><code>#5A4500 / #FFC400</code></div></div>
+          <div class="swatch"><div class="chips"><span style="background:var(--coral-dark)"></span><span style="background:var(--coral-light)"></span></div><div class="meta"><b>코럴</b><code>#4D1626 / #FF6F7D</code></div></div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <section class="goal wrap">
-    <p class="secnum">[05] — GOAL</p>
+    <p class="secnum">[06] — GOAL</p>
     <p class="big">행정 경험에 AI를 더해,<br /><span class="accent">실용적인 서비스</span>를 만드는 사람.</p>
   </section>
 
@@ -237,16 +149,28 @@
       </a>
       <div class="meta">
         © 2026 임종권 · LAST UPDATE 2026.06<br />
-        <span class="easter">✱ built with intent — no Inter, no purple gradient</span>
+        <span class="easter">✱ purple × yellow — built with intent</span>
       </div>
     </div>
   </footer>
 
   <script>
     (function () {
+      var root = document.documentElement;
       var reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
 
-      /* 효과 1) 스크램블 디코드: 랜덤 문자가 돌다가 진짜 글자로 고정 */
+      /* ===== 다크 / 라이트 모드 토글 ===== */
+      var tb = document.getElementById('themeBtn');
+      function syncIcon() { if (tb) tb.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙'; }
+      syncIcon();
+      if (tb) tb.addEventListener('click', function () {
+        var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+        syncIcon();
+      });
+
+      /* ===== 효과 1) 스크램블 디코드 ===== */
       var CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&*+/';
       function scramble(el) {
         var target = el.getAttribute('data-text') || el.textContent;
@@ -268,12 +192,9 @@
         }, 45);
       }
       var sc = document.querySelector('.scramble');
-      if (sc) {
-        scramble(sc);                                   // 로드 시 1회
-        sc.addEventListener('mouseenter', function () { scramble(sc); }); // 마우스 올리면 재생
-      }
+      if (sc) { scramble(sc); sc.addEventListener('mouseenter', function () { scramble(sc); }); }
 
-      /* 효과 2) 커서 패럴랙스: 마우스 위치에 따라 이름이 3D로 살짝 기울어짐 */
+      /* ===== 효과 2) 커서 패럴랙스 ===== */
       var hero = document.querySelector('.hero');
       var name = document.getElementById('heroName');
       if (hero && name && matchMedia('(hover:hover)').matches && !reduce) {
@@ -288,15 +209,13 @@
         hero.addEventListener('mouseleave', function () { name.style.transform = ''; });
       }
 
-      /* ===== 병맛존 ㅋㅋ (전부 클릭 발동 → 평소엔 프로페셔널 유지) ===== */
+      /* ===== 병맛존 ㅋㅋ (전부 클릭 발동) ===== */
       function toast(msg) {
         var t = document.createElement('div'); t.className = 'toast'; t.textContent = msg;
         document.body.appendChild(t);
         requestAnimationFrame(function () { t.classList.add('show'); });
         setTimeout(function () { t.classList.remove('show'); setTimeout(function () { t.remove(); }, 350); }, 1900);
       }
-
-      /* 병맛 1) 이름 클릭 → 이모지 폭죽 */
       var EMOJI = ['🤖', '💼', '🚀', '✨', '📄', '🔥', '💻', '📌', '⭐', '🧩'];
       if (name) {
         name.style.cursor = 'pointer';
@@ -320,29 +239,20 @@
           }
         });
       }
-
-      /* 병맛 2) 점(●) 클릭 → 페이지 배럴롤 */
       var dot = document.querySelector('.dot');
-      if (dot) {
-        dot.addEventListener('click', function () {
-          if (document.body.classList.contains('barrel-roll')) return;
-          document.body.classList.add('barrel-roll');
-          toast('🛩️ do a barrel roll!');
-          setTimeout(function () { document.body.classList.remove('barrel-roll'); }, 1000);
-        });
-      }
-
-      /* 병맛 3) 푸터 'no purple gradient' 클릭 → AI 슬롭 모드 토글 (자아성찰 개그) */
+      if (dot) dot.addEventListener('click', function () {
+        if (document.body.classList.contains('barrel-roll')) return;
+        document.body.classList.add('barrel-roll');
+        toast('🛩️ do a barrel roll!');
+        setTimeout(function () { document.body.classList.remove('barrel-roll'); }, 1000);
+      });
       var egg = document.querySelector('.easter');
-      if (egg) {
-        egg.addEventListener('click', function () {
-          var on = document.body.classList.toggle('slop');
-          toast(on ? '🤮 AI SLOP MODE ON — 보라 그라데이션의 저주' : '✨ 정상화 완료 — 다시 힙하게');
-        });
-      }
+      if (egg) egg.addEventListener('click', function () {
+        var on = document.body.classList.toggle('slop');
+        toast(on ? '🤮 AI SLOP MODE ON — 보라 그라데이션의 저주' : '✨ 정상화 완료 — 다시 힙하게');
+      });
 
-      /* 보너스) 콘솔 인사 */
-      try { console.log('%c임종권 · built with intent ✱', 'color:#ff3b14;font-weight:700;font-size:15px'); } catch (e) {}
+      try { console.log('%c임종권 · purple × yellow ✱', 'color:#ffc400;background:#3a1e63;padding:3px 8px;font-weight:700'); } catch (e) {}
     })();
   </script>
 </body>

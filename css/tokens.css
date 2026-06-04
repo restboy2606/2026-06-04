@@ -1,0 +1,53 @@
+/* ============================================================
+   tokens.css — 컬러 시스템 & 디자인 토큰
+   ------------------------------------------------------------
+   주컬러(Primary)   : 다크 퍼플
+   보조컬러(Secondary): 다크 퍼플 투명도 50%
+   이벤트컬러(Event)  : 옐로우
+   라이트 / 다크 모드 모두 WCAG AA 가독성 고려
+   ============================================================ */
+
+:root {
+  /* ---- 브랜드 3색 (요구사항) ---- */
+  --primary:   #3a1e63;                  /* 주컬러 · 다크 퍼플 */
+  --secondary: rgba(58, 30, 99, 0.5);    /* 보조 · 다크 퍼플 50% */
+  --event:     #ffc400;                  /* 이벤트 · 옐로우 */
+  --on-event:  #1b1130;                  /* 옐로우 위 글자색(가독성용 다크) */
+
+  /* ---- 컬러 팔레트: 짝을 이루는 5쌍 (dark / light) ---- */
+  --purple-dark: #3a1e63;  --purple-light: #b89dec;  /* 1. 퍼플 (브랜드) */
+  --blue-dark:   #16284d;  --blue-light:   #5b8def;  /* 2. 다크블루 / 로열블루 */
+  --green-dark:  #123524;  --green-light:  #7bd651;  /* 3. 다크그린 / 연두 */
+  --amber-dark:  #5a4500;  --amber-light:  #ffc400;  /* 4. 다크앰버 / 옐로우 */
+  --coral-dark:  #4d1626;  --coral-light:  #ff6f7d;  /* 5. 다크레드 / 코럴 */
+
+  /* ---- 시맨틱 토큰 (라이트 모드 기본값) ---- */
+  --bg:        #faf7fd;
+  --surface:   #ffffff;
+  --text:      #1b1130;   /* 본문 — 고대비(약 12:1) */
+  --muted:     #6e6385;   /* 보조 텍스트 — AA 통과 */
+  --line:      rgba(58, 30, 99, 0.16);
+  --accent:    var(--primary);   /* 인터랙션 강조색(라이트=다크퍼플) */
+  --hero-bg:   var(--primary);   /* 히어로는 항상 다크 퍼플 패널 */
+  --hero-text: #ffffff;
+
+  /* ---- 폰트 / 모양 ---- */
+  --display: 'Space Grotesk', 'IBM Plex Sans KR', sans-serif;
+  --sans:    'IBM Plex Sans KR', 'Space Grotesk', sans-serif;
+  --mono:    'Space Mono', monospace;
+}
+
+/* ===================== 다크 모드 ===================== */
+:root[data-theme="dark"] {
+  --bg:        #130d1f;
+  --surface:   #1d1430;
+  --text:      #ece6f7;   /* 밝은 라벤더-화이트 — 고대비(약 15:1) */
+  --muted:     #a99cc4;
+  --line:      rgba(184, 157, 236, 0.20);
+  --accent:    var(--purple-light);          /* 다크모드 강조 = 밝은 퍼플(가시성↑) */
+  --secondary: rgba(184, 157, 236, 0.5);
+  --event:     #ffd23f;                      /* 어두운 면 위에서 더 밝은 옐로우 */
+  --on-event:  #1b1130;
+  --hero-bg:   #1c1233;                      /* 더 깊은 퍼플 */
+  --hero-text: #f3eefb;
+}

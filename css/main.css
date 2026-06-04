@@ -1,0 +1,135 @@
+/* ============================================================
+   main.css — 레이아웃 & 컴포넌트
+   색상은 전부 tokens.css 의 변수만 사용 → 다크모드 자동 대응
+   ============================================================ */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .3s,color .3s}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+@media(max-width:600px){.wrap{padding:0 20px}}
+
+/* grain */
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.04;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+:root[data-theme="dark"] .grain{mix-blend-mode:screen;opacity:.05}
+
+/* topbar */
+.topbar{position:sticky;top:0;z-index:30;background:color-mix(in srgb, var(--bg) 82%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topbar .row{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-family:var(--display);font-weight:700;letter-spacing:-.01em;font-size:1.05rem;color:var(--text)}
+.logo em{font-style:normal;font-family:var(--mono);font-size:.68rem;color:var(--muted);font-weight:400;margin-left:6px}
+.navwrap{display:flex;align-items:center;gap:18px}
+.mininav{display:flex;gap:20px;font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.04em}
+.mininav a{color:var(--muted);transition:color .15s}
+.mininav a:hover{color:var(--accent)}
+@media(max-width:680px){.mininav{display:none}}
+.themebtn{font-size:1rem;background:transparent;border:1px solid var(--line);border-radius:999px;width:38px;height:38px;cursor:pointer;line-height:1;transition:border-color .15s,transform .15s;color:var(--text)}
+.themebtn:hover{border-color:var(--accent);transform:scale(1.06)}
+
+/* hero — 항상 다크 퍼플 패널 (주컬러), 옐로우 이벤트 강조 */
+.hero{background:var(--hero-bg);color:var(--hero-text);padding:88px 0 56px;position:relative;z-index:2;perspective:900px;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-100px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle, color-mix(in srgb, var(--event) 28%, transparent), transparent 70%);pointer-events:none}
+.hero .wrap{position:relative;z-index:1}
+.kicker{font-family:var(--mono);font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;color:color-mix(in srgb, var(--hero-text) 75%, transparent);display:flex;align-items:center;gap:10px;margin-bottom:30px}
+.dot{width:9px;height:9px;background:var(--event);border-radius:50%;box-shadow:0 0 0 4px color-mix(in srgb, var(--event) 30%, transparent);cursor:pointer}
+.name{font-family:var(--display);font-weight:700;font-size:clamp(4rem,15vw,9.5rem);line-height:.94;letter-spacing:-.02em;will-change:transform;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.role{font-family:var(--display);font-weight:500;font-size:clamp(1.15rem,3.2vw,1.85rem);margin-top:26px;letter-spacing:-.01em}
+.role .accent{color:var(--event)}
+.intro{max-width:560px;margin-top:18px;color:color-mix(in srgb, var(--hero-text) 82%, transparent);font-size:1.05rem}
+.scramble{cursor:default}
+
+/* marquee */
+.marquee{border-top:1px solid var(--primary);border-bottom:1px solid var(--primary);background:var(--primary);color:#fff;overflow:hidden;white-space:nowrap;padding:13px 0;position:relative;z-index:2}
+.track{display:inline-block;animation:scroll 30s linear infinite;font-family:var(--display);font-weight:500;font-size:1.02rem;letter-spacing:.02em}
+.track span{padding-left:30px}
+.track span::before{content:"✱";color:var(--event);margin-right:30px}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee:hover .track{animation-play-state:paused}
+
+/* sections */
+.sec{display:grid;grid-template-columns:170px 1fr;gap:40px;padding:62px 0;border-bottom:1px solid var(--line);position:relative;z-index:2}
+@media(max-width:720px){.sec{grid-template-columns:1fr;gap:16px;padding:46px 0}}
+.secnum{font-family:var(--mono);font-size:.76rem;letter-spacing:.06em;color:var(--accent);text-transform:uppercase}
+.sectitle{font-family:var(--display);font-weight:700;font-size:1.85rem;letter-spacing:-.02em;margin-bottom:22px;color:var(--text)}
+.lead{font-size:1.12rem;max-width:620px;color:var(--text)}
+.lead b{font-weight:700;color:var(--accent)}
+
+/* skills rows — hover 시 이벤트 옐로우(다크 글자) */
+.rows{border-top:1px solid var(--line)}
+.r{display:grid;grid-template-columns:34px 210px 1fr;gap:16px;align-items:baseline;padding:18px 8px;border-bottom:1px solid var(--line);transition:background .18s,padding-left .18s,color .18s}
+.r:hover{background:var(--event);color:var(--on-event);padding-left:18px}
+.r:hover .n,.r:hover .d{color:var(--on-event)}
+.r .n{font-family:var(--mono);font-size:.78rem;color:var(--accent)}
+.r .t{font-family:var(--display);font-weight:600;font-size:1.1rem}
+.r .d{color:var(--muted);font-size:.97rem}
+@media(max-width:600px){.r{grid-template-columns:1fr;gap:4px}.r .n{display:none}}
+
+/* experience */
+.xp{display:grid;grid-template-columns:170px 1fr;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)}
+.xp:last-child{border-bottom:0}
+.xp .yr{font-family:var(--display);font-weight:600;font-size:1.05rem;color:var(--accent)}
+.xp .ti{font-family:var(--display);font-weight:600;font-size:1.14rem;color:var(--text)}
+.xp .ds{color:var(--muted);margin-top:4px;font-size:.97rem}
+@media(max-width:600px){.xp{grid-template-columns:1fr;gap:5px}}
+
+/* more */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:44px}
+@media(max-width:600px){.two{grid-template-columns:1fr;gap:30px}}
+.sublbl{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:16px}
+.tags{display:flex;flex-wrap:wrap;gap:10px}
+.tag{border:1.5px solid var(--accent);color:var(--text);padding:8px 16px;font-family:var(--display);font-weight:500;font-size:.92rem;transition:.16s}
+.tag:hover{background:var(--event);border-color:var(--event);color:var(--on-event);transform:translateY(-2px)}
+.learn{list-style:none}
+.learn li{padding:9px 0;border-bottom:1px solid var(--line);font-weight:500;display:flex;gap:11px;color:var(--text)}
+.learn li::before{content:"→";color:var(--event);font-family:var(--mono)}
+
+/* color system — 팔레트 표시 */
+.brandrow{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:26px}
+.brandchip{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.74rem;color:var(--muted)}
+.brandchip i{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:inline-block}
+.palette{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+@media(max-width:760px){.palette{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:420px){.palette{grid-template-columns:1fr}}
+.swatch{border:1px solid var(--line);overflow:hidden;background:var(--surface)}
+.swatch .chips{display:flex;height:76px}
+.swatch .chips span{flex:1}
+.swatch .meta{padding:11px 12px}
+.swatch .meta b{display:block;font-family:var(--display);font-size:.92rem;font-weight:600;color:var(--text)}
+.swatch .meta code{font-family:var(--mono);font-size:.66rem;color:var(--muted)}
+
+/* goal — 옐로우 형광펜 하이라이트(다크 글자=가독성) */
+.goal{padding:78px 0;position:relative;z-index:2}
+.goal .secnum{margin-bottom:22px}
+.big{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,5.2vw,3.4rem);line-height:1.18;letter-spacing:-.02em;max-width:920px;color:var(--text)}
+.big .accent{background:var(--event);color:var(--on-event);padding:0 .12em;border-radius:3px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+
+/* footer */
+footer{border-top:1px solid var(--primary);padding:40px 0 64px;position:relative;z-index:2}
+.foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px}
+.gh{display:inline-flex;align-items:center;gap:9px;font-family:var(--display);font-weight:600;border:1.5px solid var(--accent);color:var(--text);padding:11px 19px;transition:.16s}
+.gh:hover{background:var(--accent);color:var(--bg)}
+.foot .meta{font-family:var(--mono);font-size:.72rem;color:var(--muted);text-align:right;line-height:1.7}
+.foot .meta .easter{color:var(--accent);cursor:pointer}
+
+/* load reveal */
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.hero .wrap>*{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+.hero .name{animation:fadein .7s ease both;animation-delay:.04s}
+.hero .role{animation-delay:.13s}
+.hero .intro{animation-delay:.21s}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto}}
+
+/* ===== 병맛존 ㅋㅋ ===== */
+@keyframes barrel{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.barrel-roll{animation:barrel 1s ease}
+.easter{cursor:pointer}
+.confetti{position:fixed;top:0;left:0;font-size:26px;pointer-events:none;z-index:9999;will-change:transform,opacity}
+.toast{position:fixed;left:50%;bottom:34px;transform:translateX(-50%) translateY(20px);background:var(--text);color:var(--bg);font-family:var(--mono);font-size:.8rem;padding:12px 20px;z-index:9999;opacity:0;transition:.3s;white-space:nowrap;border:1px solid var(--event)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+body.slop{background:linear-gradient(135deg,#7c3aed,#4f46e5,#2563eb)!important}
+body.slop .grain,body.slop .marquee{display:none!important}
+body.slop *{font-family:"Comic Sans MS","Comic Sans","Inter",sans-serif!important;color:#fff!important;border-radius:14px!important;letter-spacing:0!important;text-align:center!important}
+body.slop .wrap,body.slop .sec,body.slop .two,body.slop .rows,body.slop .xp,body.slop .r,body.slop .palette{display:block!important}
+body.slop .name{text-shadow:0 6px 24px rgba(0,0,0,.35)}
+body.slop .tag,body.slop .gh{background:rgba(255,255,255,.16)!important;border-color:rgba(255,255,255,.45)!important}
