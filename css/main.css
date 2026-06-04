@@ -83,19 +83,13 @@ a{color:inherit;text-decoration:none}
 .learn li{padding:9px 0;border-bottom:1px solid var(--line);font-weight:500;display:flex;gap:11px;color:var(--text)}
 .learn li::before{content:"→";color:var(--event);font-family:var(--mono)}
 
-/* color system — 팔레트 표시 */
-.brandrow{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:26px}
-.brandchip{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.74rem;color:var(--muted)}
-.brandchip i{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:inline-block}
-.palette{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
-@media(max-width:760px){.palette{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:420px){.palette{grid-template-columns:1fr}}
-.swatch{border:1px solid var(--line);overflow:hidden;background:var(--surface)}
-.swatch .chips{display:flex;height:76px}
-.swatch .chips span{flex:1}
-.swatch .meta{padding:11px 12px}
-.swatch .meta b{display:block;font-family:var(--display);font-size:.92rem;font-weight:600;color:var(--text)}
-.swatch .meta code{font-family:var(--mono);font-size:.66rem;color:var(--muted)}
+/* 컬러 무드 전환 — 팔레트 피커 (topbar) */
+.palettes{display:flex;gap:7px;align-items:center}
+.pdot{width:18px;height:18px;border-radius:50%;border:2px solid transparent;cursor:pointer;padding:0;box-shadow:0 0 0 1px var(--line);transition:transform .15s,border-color .15s}
+.pdot:hover{transform:scale(1.18)}
+.pdot[aria-pressed="true"]{border-color:var(--text)}
+@media(max-width:680px){.logo em{display:none}}
+@media(max-width:380px){.pdot{width:16px;height:16px}}
 
 /* goal — 옐로우 형광펜 하이라이트(다크 글자=가독성) */
 .goal{padding:78px 0;position:relative;z-index:2}

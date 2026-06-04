@@ -19,6 +19,7 @@
         var s = localStorage.getItem('theme');
         var t = s || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
         document.documentElement.setAttribute('data-theme', t);
+        document.documentElement.setAttribute('data-palette', localStorage.getItem('palette') || 'purple');
       } catch (e) {}
     })();
   </script>
@@ -34,8 +35,15 @@
           <a href="#about">01 / 소개</a>
           <a href="#skills">02 / 역량</a>
           <a href="#exp">03 / 경력</a>
-          <a href="#colors">05 / 컬러</a>
+          <a href="#more">04 / 자격</a>
         </nav>
+        <div class="palettes" role="group" aria-label="컬러 무드 선택">
+          <button class="pdot" type="button" data-set="purple" style="background:#b89dec" aria-label="퍼플 무드"></button>
+          <button class="pdot" type="button" data-set="blue" style="background:#5b8def" aria-label="블루 무드"></button>
+          <button class="pdot" type="button" data-set="green" style="background:#7bd651" aria-label="그린 무드"></button>
+          <button class="pdot" type="button" data-set="amber" style="background:#ffc400" aria-label="앰버 무드"></button>
+          <button class="pdot" type="button" data-set="coral" style="background:#ff6f7d" aria-label="코럴 무드"></button>
+        </div>
         <button class="themebtn" id="themeBtn" type="button" aria-label="다크/라이트 모드 전환">🌙</button>
       </div>
     </div>
@@ -116,28 +124,11 @@
       </div>
     </section>
 
-    <section id="colors" class="sec">
-      <p class="secnum">[05] — COLOR SYSTEM</p>
-      <div>
-        <h2 class="sectitle">컬러 시스템</h2>
-        <div class="brandrow">
-          <span class="brandchip"><i style="background:var(--primary)"></i> 주컬러 · 다크 퍼플</span>
-          <span class="brandchip"><i style="background:var(--secondary)"></i> 보조 · 퍼플 50%</span>
-          <span class="brandchip"><i style="background:var(--event)"></i> 이벤트 · 옐로우</span>
-        </div>
-        <div class="palette">
-          <div class="swatch"><div class="chips"><span style="background:var(--purple-dark)"></span><span style="background:var(--purple-light)"></span></div><div class="meta"><b>퍼플</b><code>#3A1E63 / #B89DEC</code></div></div>
-          <div class="swatch"><div class="chips"><span style="background:var(--blue-dark)"></span><span style="background:var(--blue-light)"></span></div><div class="meta"><b>블루</b><code>#16284D / #5B8DEF</code></div></div>
-          <div class="swatch"><div class="chips"><span style="background:var(--green-dark)"></span><span style="background:var(--green-light)"></span></div><div class="meta"><b>그린</b><code>#123524 / #7BD651</code></div></div>
-          <div class="swatch"><div class="chips"><span style="background:var(--amber-dark)"></span><span style="background:var(--amber-light)"></span></div><div class="meta"><b>앰버</b><code>#5A4500 / #FFC400</code></div></div>
-          <div class="swatch"><div class="chips"><span style="background:var(--coral-dark)"></span><span style="background:var(--coral-light)"></span></div><div class="meta"><b>코럴</b><code>#4D1626 / #FF6F7D</code></div></div>
-        </div>
-      </div>
-    </section>
+    <!-- 컬러 시스템 = 상단 팔레트 피커(분위기 전환 스위처)로 대체됨 -->
   </main>
 
   <section class="goal wrap">
-    <p class="secnum">[06] — GOAL</p>
+    <p class="secnum">[05] — GOAL</p>
     <p class="big">행정 경험에 AI를 더해,<br /><span class="accent">실용적인 서비스</span>를 만드는 사람.</p>
   </section>
 
@@ -168,6 +159,24 @@
         root.setAttribute('data-theme', next);
         try { localStorage.setItem('theme', next); } catch (e) {}
         syncIcon();
+      });
+
+      /* ===== 컬러 무드(팔레트) 전환 — 홈 전체 분위기 변경 ===== */
+      var PNAME = { purple: '퍼플', blue: '블루', green: '그린', amber: '앰버', coral: '코럴' };
+      var pdots = document.querySelectorAll('.pdot');
+      function syncDots() {
+        var cur = root.getAttribute('data-palette');
+        pdots.forEach(function (d) { d.setAttribute('aria-pressed', d.getAttribute('data-set') === cur ? 'true' : 'false'); });
+      }
+      syncDots();
+      pdots.forEach(function (d) {
+        d.addEventListener('click', function () {
+          var set = d.getAttribute('data-set');
+          root.setAttribute('data-palette', set);
+          try { localStorage.setItem('palette', set); } catch (e) {}
+          syncDots();
+          toast('🎨 ' + (PNAME[set] || set) + ' 무드');
+        });
       });
 
       /* ===== 효과 1) 스크램블 디코드 ===== */
